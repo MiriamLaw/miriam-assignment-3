@@ -17,9 +17,7 @@ public class UserLoginApplication {
 		System.out.println("Enter your password: ");
 		String password = scanner.nextLine();
 
-		String name = "";
-
-		userService.validateLogin(username, password, name);
+		userService.validateLogin(username, password);
 
 		scanner.close();
 	}

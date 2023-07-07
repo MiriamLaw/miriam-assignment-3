@@ -53,7 +53,7 @@ public class UserService {
 		}
 	}
 
-	public boolean validateLogin(String username, String password, String name) {
+	public boolean validateLogin(String username, String password) {
 		Scanner scanner = new Scanner(System.in);
 		int invalidAttempts = 0;
 		boolean loggedIn = false;
