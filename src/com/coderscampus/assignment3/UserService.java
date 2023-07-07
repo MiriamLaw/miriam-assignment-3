@@ -3,6 +3,7 @@ package com.coderscampus.assignment3;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 //to validate, to read data from file and create user array
 
@@ -53,26 +54,40 @@ public class UserService {
 	}
 
 	public boolean validateLogin(String username, String password, String name) {
-		int loginAttempts = 0;
+		Scanner scanner = new Scanner(System.in);
+		int invalidAttempts = 0;
+		boolean loggedIn = false;
 
-		for (User user : users) {
-			
-			if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
-				System.out.println("Welcome: " + user.getName());
-				return true;
-			} else {
-				loginAttempts++;
+		try {
+			while (!loggedIn && invalidAttempts < 5) {
+				for (User user : users) {
+					if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
+						System.out.println("Welcome " + user.getName());
+						loggedIn = true;
+						break;
+					}
+				}
+
+				if (!loggedIn) {
+					invalidAttempts++;
+					System.out.println("Invalid login, please try again.");
+
+					if (invalidAttempts >= 5) {
+						System.out.println("Too many failed login attempts, you are now locked out.");
+						return false;
+					}
+
+					System.out.println("Enter your username: ");
+					username = scanner.nextLine();
+
+					System.out.println("Enter your password: ");
+					password = scanner.nextLine();
+
+				}
 			}
-
-			if (loginAttempts >= 5) {
-				System.out.println("Too many failed login attempts, you are now locked out.");
-				return false;
-			} else {
-
-				System.out.println("Invalid login, please try again.");
-
-			}
+		} finally {
+			scanner.close();
 		}
-		return false;
+		return loggedIn;
 	}
 }

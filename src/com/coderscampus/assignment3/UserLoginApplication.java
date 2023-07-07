@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class UserLoginApplication {
 
 	public static void main(String[] args) {
-		
+
 		UserService userService = new UserService();
 		userService.readDataFromFile();
 
@@ -17,7 +17,7 @@ public class UserLoginApplication {
 		System.out.println("Enter your password: ");
 		String password = scanner.nextLine();
 
-		String name = "name";
+		String name = "";
 
 		userService.validateLogin(username, password, name);
 
