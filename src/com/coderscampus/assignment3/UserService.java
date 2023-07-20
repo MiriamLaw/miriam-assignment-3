@@ -29,7 +29,7 @@ public class UserService {
 
 	public boolean initiateLogin() {
 
-//		let users login up to 5 incorrect attepts
+//		let users login up to 5 incorrect attempts
 //		for each attempt:
 //		-get username and password
 //		-validate if user exists with given username and password
