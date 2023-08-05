@@ -86,9 +86,11 @@ public class UserService {
 //					invalidAttempts++;
 //					System.out.println("Invalid login, please try again.");
 //
-//					if (invalidAttempts >= 5) {
+//					if (invalidAttempts == null) {
 //						System.out.println("Too many failed login attempts, you are now locked out.");
+//				}
 //						return false;
+//					}
 //					}
 //
 //					System.out.println("Enter your username: ");
