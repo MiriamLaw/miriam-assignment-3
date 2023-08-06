@@ -45,17 +45,23 @@ public class UserService {
 					System.out.println("Welcome " + loggedInUser.getName());
 					break;
 				} else if (loggedInUser == null) {
-					System.out.println("Invalid login, please try again.");
+					if (invalidAttempts < 4) {
+						
+						System.out.println("Invalid login, please try again.");
+					}
 					invalidAttempts++;
 				}
 
 			}
-		}
-		if (invalidAttempts >= 5 && loggedInUser != null) {
-			System.out.println("Too many failed login attempts, you are now locked out.");
+			if (loggedInUser == null) {
+				if (invalidAttempts >= 4) {
+					System.out.println("Too many failed login attempts, you are now locked out.");
+					
+				}
+			}
+			return false;
 		}
 
-		return false;
 	}
 
 }
