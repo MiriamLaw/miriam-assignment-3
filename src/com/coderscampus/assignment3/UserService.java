@@ -19,7 +19,7 @@ public class UserService {
 	public User getUserByUsernameAndPassword(String username, String password) {
 
 		for (User user : users) {
-			if (user.getName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
+			if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
 				return user;
 			}
 		}
@@ -43,7 +43,7 @@ public class UserService {
 
 				if (loggedInUser != null) {
 					System.out.println("Welcome " + loggedInUser.getName());
-					return true;
+					break;
 				} else if (loggedInUser == null) {
 					System.out.println("Invalid login, please try again.");
 					invalidAttempts++;
